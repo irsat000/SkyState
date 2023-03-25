@@ -1,0 +1,164 @@
+/*----------SETTINGS---------*/
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+  position: relative;
+  height: 100%;
+}
+
+
+ul,
+ol,
+li,
+b,
+h1,
+h2,
+h3,
+h4,
+h6,
+a,
+p {
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+a {
+  color: unset;
+
+  &:hover {
+    color: unset;
+  }
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #7BB5DE 0%, #5d99c5 35%, #4c8bb8 100%);
+  color: #ffffff;
+  font-family: 'Snippet', sans-serif;
+}
+
+
+.page_content {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 30px 0;
+
+  .searchbar-cont {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 360px;
+
+    input {
+      border: none;
+      outline: transparent;
+      padding: 12px 30px 12px 12px;
+      font-size: 1.2rem;
+      border-radius: 4px;
+      font-family: 'Rosario', sans-serif;
+      font-weight: 300;
+      width: 100%;
+    }
+
+    .icon {
+      position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #818181;
+      z-index: 200;
+    }
+  }
+
+  .location-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+
+    .icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 1.2rem;
+      margin-bottom: -2px;
+      margin-right: 1.5rem;
+    }
+  }
+}
+
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+
+  body {
+    background: url(../assets/desktop_bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 30px;
+
+    .location-cont {
+      order: 1;
+      align-items: center;
+
+      .icon {
+        font-size: 1.6rem;
+      }
+
+      span {
+        font-size: 1.3rem;
+      }
+    }
+
+    .searchbar-cont {
+      order: 2;
+      flex-shrink: 0;
+      width: unset;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {}
