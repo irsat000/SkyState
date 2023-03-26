@@ -50,6 +50,7 @@ body {
 .page_content {
   display: flex;
   flex-direction: column;
+  padding-bottom: 80px;
 }
 
 header {
@@ -176,6 +177,7 @@ section.hourly_weather ul.hourly_list {
 section.hourly_weather ul.hourly_list li {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 8px;
 }
 section.hourly_weather ul.hourly_list li span {
@@ -187,15 +189,114 @@ section.hourly_weather ul.hourly_list li img {
   height: 50px;
 }
 
-.weekly_report-cont {
-  position: sticky;
+section.weekly_weather-desktop {
+  display: none;
+  margin-top: 20px;
+  padding: 14px 0;
+  width: 100%;
+  overflow-y: auto;
+}
+section.weekly_weather-desktop ul.weekly_list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 0 14px;
+  overflow-x: auto;
+}
+section.weekly_weather-desktop ul.weekly_list li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+section.weekly_weather-desktop ul.weekly_list li span {
+  font-size: 1.3rem;
+  text-align: center;
+}
+section.weekly_weather-desktop ul.weekly_list li img {
+  width: 70px;
+  height: 70px;
+}
+
+section.weekly_weather-mobile.active {
+  display: block;
+}
+
+section.weekly_weather-mobile.active .weekly_list-cont.active {
+  bottom: 0;
+}
+
+section.weekly_weather-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3764705882);
+  z-index: 310;
+}
+section.weekly_weather-mobile .weekly_list-cont {
+  width: 100%;
+  position: absolute;
+  bottom: -420px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #7BB5DE;
+  border-radius: 30px 30px 0 0;
+  padding: 14px;
+  gap: 14px;
+  overflow-y: hidden;
+  transition: bottom 0.1s ease-in-out;
+}
+section.weekly_weather-mobile .weekly_list-cont > .icon {
+  font-size: 2rem;
+  color: #ffffff;
+}
+section.weekly_weather-mobile .weekly_list-cont .weekly_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
+  gap: 10px;
+}
+section.weekly_weather-mobile .weekly_list-cont .weekly_list li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+section.weekly_weather-mobile .weekly_list-cont .weekly_list li span:first-child {
+  flex-grow: 1;
+  font-size: 1.3rem;
+}
+section.weekly_weather-mobile .weekly_list-cont .weekly_list li img {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin: 0 30px 0 10px;
+}
+section.weekly_weather-mobile .weekly_list-cont .weekly_list li span:last-child {
+  min-width: 50px;
+  flex-shrink: 0;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.show_weekly-cont {
+  position: fixed;
   bottom: 0;
   z-index: 300;
   padding: 20px 0;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
-.weekly_report-cont .show_weekly_report {
+.show_weekly-cont .show_weekly-btn {
   outline: transparent;
   border-radius: 4px;
   padding: 8px 22px;
@@ -223,6 +324,10 @@ section.hourly_weather ul.hourly_list li img {
     background: url(../assets/desktop_bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
+  }
+  .page_content {
+    padding-bottom: unset;
   }
   header {
     flex-direction: row;
@@ -277,7 +382,13 @@ section.hourly_weather ul.hourly_list li img {
     margin-top: unset;
     background-color: unset;
   }
-  .weekly_report-cont {
+  section.weekly_weather-desktop {
+    display: block;
+  }
+  section.weekly_weather-mobile {
+    display: none !important;
+  }
+  .show_weekly-cont {
     display: none;
   }
 }/*# sourceMappingURL=App.css.map */
