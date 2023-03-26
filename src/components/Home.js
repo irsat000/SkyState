@@ -1,10 +1,40 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { GeoAltFill, Search, ChevronCompactUp, ChevronCompactDown } from "react-bootstrap-icons";
 //import logo from '../logo.svg';
 import W_Rain from "../assets/conditions/rain.png";
 
 
 export const Page_Home = () => {
+    const [weeklyActive, setWeeklyActive] = useState(false);
+    const [weeklyListActive, setWeeklyListActive] = useState(false);
+    const refWeekly = useRef(null);
+    const refWeeklyBtn = useRef(null);
+
+    const handleWeeklyActive = () => {
+        setWeeklyActive(true);
+        setTimeout(() => {
+            setWeeklyListActive(true);
+        }, 10); //Gotta wait after display change for transition to have an effect
+    }
+
+    const clickOutside = (event) => {
+        if (refWeekly.current && !refWeekly.current.contains(event.target) && !refWeeklyBtn.current.contains(event.target)) {
+            setWeeklyListActive(false);
+            setTimeout(() => {
+                setWeeklyActive(false);
+            }, 100); //100 because transition is 0.1s
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", clickOutside);
+        return () => {
+            document.removeEventListener("mousedown", clickOutside);
+        };
+    }, []);
+
+
+
     return (
         <>
             <div className="page_content">
@@ -104,10 +134,10 @@ export const Page_Home = () => {
                 </section>
             </div>
             <div className="show_weekly-cont">
-                <button className="show_weekly-btn">Next 7 days <ChevronCompactUp className="icon" /></button>
+                <button ref={refWeeklyBtn} className="show_weekly-btn" onClick={handleWeeklyActive}>Next 7 days <ChevronCompactUp className="icon" /></button>
             </div>
-            <section className="weekly_weather-mobile">
-                <div className="weekly_list-cont">
+            <section className={`weekly_weather-mobile ${weeklyActive ? 'active' : ''}`}>
+                <div ref={refWeekly} className={`weekly_list-cont ${weeklyListActive ? 'active' : ''}`}>
                     <ChevronCompactDown className="icon" />
                     <ul className="weekly_list">
                         <li>
