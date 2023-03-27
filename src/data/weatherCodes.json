@@ -1,0 +1,54 @@
+[
+    {
+        "keys": [0],
+        "value": "sunny.png"
+    },
+    {
+        "keys": [1, 2, 3],
+        "value": "sunny.png"
+    },
+    {
+        "keys": [45, 48],
+        "value": "cloud.png"
+    },
+    {
+        "keys": [51, 53, 55],
+        "value": "cloudy2.png"
+    },
+    {
+        "keys": [56, 57],
+        "value": "rain2.png"
+    },
+    {
+        "keys": [61, 63, 65],
+        "value": "rain2.png"
+    },
+    {
+        "keys": [66, 67],
+        "value": "rain2.png"
+    },
+    {
+        "keys": [71, 73, 75],
+        "value": "snowing.png"
+    },
+    {
+        "keys": [77],
+        "value": "snowing2.png"
+    },
+    {
+        "keys": [80, 81, 82],
+        "value": "rain2.png"
+    },
+    {
+        "keys": [85, 86],
+        "value": "snowing.png"
+    },
+    {
+        "keys": [95],
+        "value": "storm.png"
+    },
+    {
+        "keys": [96, 99],
+        "value": "storm.png"
+    }
+]
