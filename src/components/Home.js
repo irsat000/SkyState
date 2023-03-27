@@ -1,16 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { GeoAltFill, Search, ChevronCompactUp, ChevronCompactDown } from "react-bootstrap-icons";
-//import logo from '../logo.svg';
 import wCodeData from '../data/weatherCodes.json';
-import W_Rain from "../assets/conditions/rain.png";
 
 
-console.log(wCodeData);
 
 export const Page_Home = (props) => {
     const wdata = props.weatherData;
-    //const asdf = wCodeData.find(obj => obj.keys.includes(wdata?.daily.weathercode[0]))?.value;
-    console.log(wdata);
+    const locationData = props.locationData;
 
     const date = new Date();
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -55,7 +51,7 @@ export const Page_Home = (props) => {
                     </div>
                     <div className="location-cont">
                         <GeoAltFill className="icon" />
-                        <span>Bursa - Türkiye</span>
+                        <span>{locationData ? `${locationData?.city} - ${locationData?.country}` : "No location info"}</span>
                     </div>
                 </header>
                 <main className="today_info-cont">

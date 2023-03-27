@@ -3,6 +3,7 @@ import { Page_Home } from './components/Home';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [locationData, setLocationData] = useState(null);
 
   if ('geolocation' in navigator) {
     /* geolocation is available */
@@ -13,14 +14,18 @@ function App() {
           setWeatherData(data);
         })
         .catch((err) => console.log('Error =>', err));
+
+      const ipInfoRes = await fetch("https://ipinfo.io/json?token=d9a9368faea8a6");
+      const ipInfo = await ipInfoRes.json();
+      setLocationData({ city: ipInfo.city, country: ipInfo.country });
     });
   } else {
     /* geolocation IS NOT available */
     alert('Failed to get current location. Please choose one instead.')
   }
-  
+
   return (
-    <Page_Home weatherData={weatherData} />
+    <Page_Home weatherData={weatherData} locationData={locationData} />
   );
 }
 
