@@ -4,9 +4,42 @@ import wCodeData from '../data/weatherCodes.json';
 
 
 
+
 export const Page_Home = (props) => {
-    const wdata = props.weatherData;
-    const locationData = props.locationData;
+    const [wdata, setWdata] = useState(null);
+    const [locationData, setLocationData] = useState(null);
+
+    function fetchDataByCurrentLocation() {
+        if ('geolocation' in navigator) {
+            /* geolocation is available */
+            navigator.geolocation.getCurrentPosition((position) => {
+                fetchDataByCoords(position.coords.latitude, position.coords.longitude);
+
+                fetch(`https://ipinfo.io/json?token=d9a9368faea8a6`)
+                    .then((res) => res.json())
+                    .then((data) => {
+                        setLocationData(`${data.city} - ${data.country} - Current location`);
+                    })
+                    .catch((err) => console.log('Error =>', err));
+            });
+        } else {
+            /* geolocation IS NOT available */
+            alert('Failed to get current location. Please choose one instead.')
+        }
+    }
+
+    const fetchDataByCoords = (latitude, longitude) => {
+        fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,relativehumidity_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max&forecast_days=8&timezone=Europe%2FBerlin`)
+            .then((res) => res.json())
+            .then((data) => {
+                setWdata(data);
+            })
+            .catch((err) => console.log('Error =>', err));
+    }
+
+    useEffect(() => {
+        fetchDataByCurrentLocation();
+    }, []);
 
     const date = new Date();
     const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -14,6 +47,8 @@ export const Page_Home = (props) => {
 
     const [weeklyActive, setWeeklyActive] = useState(false);
     const [weeklyListActive, setWeeklyListActive] = useState(false);
+
+    const [searchSuggestions, setSearchSuggestions] = useState(null);
 
     const refWeekly = useRef(null);
     const refWeeklyBtn = useRef(null);
@@ -34,6 +69,41 @@ export const Page_Home = (props) => {
         }
     };
 
+    const handleSearchChange = (func, delay) => {
+        let timeoutId;
+        return function (...args) {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout(() => {
+                func.apply(null, args);
+            }, delay);
+        };
+    }
+
+    const fetchSearchSuggestions = (inputVal) => {
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=5&q=${inputVal}&autocomplete=1`)
+            .then((res) => res.json())
+            .then((data) => {
+                const suggestionList = data.map((v, i) => v.display_name);
+                setSearchSuggestions(suggestionList);
+            })
+            .catch((err) => console.log("Error =>", err));
+    };
+
+    const getLatLng = (city) => {
+        const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${city}`;
+        fetch(apiUrl)
+            .then((res) => res.json())
+            .then((data) => {
+                const latitude = data[0].lat;
+                const longitude = data[0].lon;
+                fetchDataByCoords(latitude, longitude);
+                setLocationData(data[0].display_name);
+            })
+            .catch((err) => console.log("Error =>", err));
+    }
+
     useEffect(() => {
         document.addEventListener("mousedown", clickOutside);
         return () => {
@@ -46,12 +116,23 @@ export const Page_Home = (props) => {
             <div className="page_content">
                 <header>
                     <div className="searchbar-cont">
-                        <input type="text" placeholder="Search by region" />
+                        <input type="text" placeholder="Search by region" onChange={handleSearchChange((event) => {
+                            fetchSearchSuggestions(event.target.value);
+                        }, 500)} />
                         <Search className="icon" />
+                        <ul className="search_suggestions">
+                            {searchSuggestions != null &&
+                                searchSuggestions.map((value, i) =>
+                                    <li key={i} onMouseDown={() => getLatLng(value)}>
+                                        {value}
+                                    </li>
+                                )
+                            }
+                        </ul>
                     </div>
                     <div className="location-cont">
                         <GeoAltFill className="icon" />
-                        <span>{locationData ? `${locationData?.city} - ${locationData?.country}` : "No location info"}</span>
+                        <span>{locationData ? `${locationData}` : "No location info"}</span>
                     </div>
                 </header>
                 <main className="today_info-cont">

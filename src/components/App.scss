@@ -69,6 +69,8 @@ header {
     justify-content: center;
     width: 100%;
     max-width: 360px;
+    font-family: 'Rosario', sans-serif;
+    font-weight: 300;
 
     input {
       border: none;
@@ -76,9 +78,12 @@ header {
       padding: 12px 30px 12px 12px;
       font-size: 1.2rem;
       border-radius: 4px;
-      font-family: 'Rosario', sans-serif;
-      font-weight: 300;
       width: 100%;
+      color: #000000;
+
+      &:focus~.search_suggestions {
+        display: block;
+      }
     }
 
     .icon {
@@ -90,6 +95,37 @@ header {
       color: #818181;
       z-index: 200;
     }
+
+    .search_suggestions {
+      display: none;
+      position: absolute;
+      top: calc(1.2rem + 27px);
+      right: 0;
+      left: 0;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      color: #000000;
+      background-color: #ffffff;
+      border-top: 1px solid #e2e2e2;
+      min-height: 14px;
+      font-size: 0.9rem;
+
+      li {
+        padding: 10px 12px;
+        cursor: pointer;
+        transition: background-color 0.1s ease;
+        border-bottom: 1px solid #e2e2e2;
+
+        &:last-child {
+          border-bottom: unset;
+        }
+
+        &:hover {
+          background-color: #f3f3f3;
+        }
+      }
+    }
   }
 
   .location-cont {
@@ -99,13 +135,13 @@ header {
     gap: 14px;
 
     .icon {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
     }
 
     span {
-      font-size: 1.2rem;
-      margin-bottom: -2px;
+      font-size: 1rem;
+      margin-bottom: -4px;
       margin-right: 1.5rem;
     }
   }
@@ -452,7 +488,7 @@ section.weekly_weather-mobile {
     display: block;
   }
 
-  section.weekly_weather-mobile{
+  section.weekly_weather-mobile {
     display: none !important;
   }
 
