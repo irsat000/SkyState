@@ -11,7 +11,6 @@ export const Page_Home = (props) => {
 
     function fetchDataByCurrentLocation() {
         if ('geolocation' in navigator) {
-            /* geolocation is available */
             navigator.geolocation.getCurrentPosition((position) => {
                 fetchDataByCoords(position.coords.latitude, position.coords.longitude);
 
@@ -21,10 +20,13 @@ export const Page_Home = (props) => {
                         setLocationData(`${data.city} - ${data.country} - Current location`);
                     })
                     .catch((err) => console.log('Error =>', err));
+            }, (err) => {
+                console.log("Error:", err.message)
+                //console.log("Failed to get current location. Please choose one instead.")
             });
         } else {
-            /* geolocation IS NOT available */
-            alert('Failed to get current location. Please choose one instead.')
+            console.log("Failed to get geolocation.")
+            //geolocation is not available
         }
     }
 
@@ -148,13 +150,13 @@ export const Page_Home = (props) => {
                         <div className="humidity">
                             <span>Humidity</span>
                             <span className="value">
-                                {`${(wdata?.hourly.relativehumidity_2m.slice(0, 24).reduce((acc, curr) => acc + curr, 0) / 24).toFixed(1)}%` ?? "--"}
+                                {wdata != null ? `${(wdata.hourly.relativehumidity_2m.slice(0, 24).reduce((acc, curr) => acc + curr, 0) / 24).toFixed(1)}%` : "--"}
                             </span>
                         </div>
                         <div className="windSpeed">
                             <span>Wind speed</span>
                             <span className="value">
-                                {`${wdata?.daily.windspeed_10m_max[0].toFixed(1)} km/h` ?? "--"}
+                                {wdata != null ? `${wdata.daily.windspeed_10m_max[0].toFixed(1)} km/h` : "--"}
                             </span>
                         </div>
                     </div>
@@ -165,22 +167,22 @@ export const Page_Home = (props) => {
                         <li>
                             <span>8:00</span>
                             <img src={require(`../assets/conditions/${wCodeData.find(obj => obj.keys.includes(wdata?.hourly.weathercode[7]))?.value ?? 'noimage.png'}`)} alt="Hourly weather condition" />
-                            <span>{`${wdata?.hourly.temperature_2m[7].toFixed(1)}°` ?? "-"}</span>
+                            <span>{wdata != null ? `${wdata.hourly.temperature_2m[7].toFixed(1)}°` : "-"}</span>
                         </li>
                         <li>
                             <span>12:00</span>
                             <img src={require(`../assets/conditions/${wCodeData.find(obj => obj.keys.includes(wdata?.hourly.weathercode[11]))?.value ?? 'noimage.png'}`)} alt="Hourly weather condition" />
-                            <span>{`${wdata?.hourly.temperature_2m[11].toFixed(1)}°` ?? "-"}</span>
+                            <span>{wdata != null ? `${wdata.hourly.temperature_2m[11].toFixed(1)}°` : "-"}</span>
                         </li>
                         <li>
                             <span>17:00</span>
                             <img src={require(`../assets/conditions/${wCodeData.find(obj => obj.keys.includes(wdata?.hourly.weathercode[16]))?.value ?? 'noimage.png'}`)} alt="Hourly weather condition" />
-                            <span>{`${wdata?.hourly.temperature_2m[16].toFixed(1)}°` ?? "-"}</span>
+                            <span>{wdata != null ? `${wdata.hourly.temperature_2m[16].toFixed(1)}°` : "-"}</span>
                         </li>
                         <li>
                             <span>21:00</span>
                             <img src={require(`../assets/conditions/${wCodeData.find(obj => obj.keys.includes(wdata?.hourly.weathercode[20]))?.value ?? 'noimage.png'}`)} alt="Hourly weather condition" />
-                            <span>{`${wdata?.hourly.temperature_2m[20].toFixed(1)}°` ?? "-"}</span>
+                            <span>{wdata != null ? `${wdata.hourly.temperature_2m[20].toFixed(1)}°` : "-"}</span>
                         </li>
                     </ul>
                 </section>
