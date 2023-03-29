@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/SkyState/static/css/main.206d8d87.css",
+    "main.js": "/SkyState/static/js/main.7b6d0f04.js",
+    "static/js/787.b4eccd70.chunk.js": "/SkyState/static/js/787.b4eccd70.chunk.js",
+    "static/media/desktop_bg.jpg": "/SkyState/static/media/desktop_bg.0a477731c06bd61b8528.jpg",
+    "static/media/noimage.png": "/SkyState/static/media/noimage.d77901617b3f0b5c179d.png",
+    "static/media/tornado.png": "/SkyState/static/media/tornado.465f8dc53dd9dbd54ad8.png",
+    "static/media/rain2.png": "/SkyState/static/media/rain2.01374a6cf4a751047896.png",
+    "static/media/storm.png": "/SkyState/static/media/storm.d937bb39998daedcd2ba.png",
+    "static/media/cloud.png": "/SkyState/static/media/cloud.79c1c4f8c91dd7029037.png",
+    "static/media/cloudy.png": "/SkyState/static/media/cloudy.8e008f98dce2a3856fc9.png",
+    "static/media/rain.png": "/SkyState/static/media/rain.4e920114cd1a0f2f38ec.png",
+    "static/media/night.png": "/SkyState/static/media/night.dda55a534a9336a90adb.png",
+    "static/media/night2.png": "/SkyState/static/media/night2.9bee516dcc26e125baa9.png",
+    "static/media/snowing.png": "/SkyState/static/media/snowing.550adfc4a0648247e6d0.png",
+    "static/media/snowing2.png": "/SkyState/static/media/snowing2.1a6243660ea4327964ea.png",
+    "static/media/cloudy2.png": "/SkyState/static/media/cloudy2.12ecedaf4efa556a8b7c.png",
+    "static/media/sunny.png": "/SkyState/static/media/sunny.97d344577ad54377f214.png",
+    "static/media/snowing3.png": "/SkyState/static/media/snowing3.de58bd7ddd88f778bcb8.png",
+    "index.html": "/SkyState/index.html",
+    "main.206d8d87.css.map": "/SkyState/static/css/main.206d8d87.css.map",
+    "main.7b6d0f04.js.map": "/SkyState/static/js/main.7b6d0f04.js.map",
+    "787.b4eccd70.chunk.js.map": "/SkyState/static/js/787.b4eccd70.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.206d8d87.css",
+    "static/js/main.7b6d0f04.js"
+  ]
+}
