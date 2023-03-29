@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I made this project as an assignment for job application. I didn't check Linkedin messages for a while, so I made it in 4 days instead of 10. 
 
-## Available Scripts
+It's responsive(compatible with all screens). 
 
-In the project directory, you can run:
+I am using Geolocation API to get the user's coordinates and ipinfo.io to get the user's location names. Normally, I should be using another API to get city name with coordinates. I was going to change it but it's safe so why bother.
 
-### `npm start`
+I am using Openstreetmap API to get searchbar suggestions and coordinates. And open-meteo API to get weather forecast.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Developed it with React. I recently started learning this library, learned more by developing this project.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Note that I am a full stack developer and I originally wanted to go back end. That's why I didn't learn front end frameworks like Vue until a month ago.
 
-### `npm test`
+# How to run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can run the project in two ways.
 
-### `npm run build`
+### Live
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Simply go to https://irsat000.github.io/SkyState/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+(It's case sensitive, "skystate" will give 404)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Locally
 
-### `npm run eject`
+Install npm. I am using 8.19.3
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Open the project folder with VS Code and run "npm start".
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Screenshot
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![combined](https://user-images.githubusercontent.com/38238671/228625506-0d3956ca-aec0-436a-bcd2-2032a26c86ed.png)
